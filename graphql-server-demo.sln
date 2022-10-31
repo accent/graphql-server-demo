@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graphql-server-demo", "graphql-server-demo.csproj", "{AE1DA1AF-E9ED-4825-BA68-DB37C32C8821}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graphql-server-db", "graphql-server-db\graphql-server-db.csproj", "{29F1BB45-CFE4-484C-8C05-6C38019F8200}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graphql-server-models", "graphql-server-models\graphql-server-models.csproj", "{724E0DF8-8032-41F6-B00E-C6FBBA1E4CB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE1DA1AF-E9ED-4825-BA68-DB37C32C8821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1DA1AF-E9ED-4825-BA68-DB37C32C8821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1DA1AF-E9ED-4825-BA68-DB37C32C8821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1DA1AF-E9ED-4825-BA68-DB37C32C8821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29F1BB45-CFE4-484C-8C05-6C38019F8200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F1BB45-CFE4-484C-8C05-6C38019F8200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F1BB45-CFE4-484C-8C05-6C38019F8200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F1BB45-CFE4-484C-8C05-6C38019F8200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724E0DF8-8032-41F6-B00E-C6FBBA1E4CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724E0DF8-8032-41F6-B00E-C6FBBA1E4CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724E0DF8-8032-41F6-B00E-C6FBBA1E4CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724E0DF8-8032-41F6-B00E-C6FBBA1E4CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

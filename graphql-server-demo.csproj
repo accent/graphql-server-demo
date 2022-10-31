@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>graphql_server_demo</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore" Version="12.14.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="graphql-server-models\**" />
+      <Compile Remove="graphql-server-db\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="graphql-server-models\**" />
+      <EmbeddedResource Remove="graphql-server-db\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="graphql-server-models\**" />
+      <None Remove="graphql-server-db\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="graphql-server-models\**" />
+      <Content Remove="graphql-server-db\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="graphql-server-models\bin\Debug\net6.0\graphql-server-models.deps.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-models\obj\graphql-server-models.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-models\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-models\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-db\bin\Debug\net6.0\graphql-server-db.deps.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-db\bin\Debug\net6.0\graphql-server-db.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-db\obj\graphql-server-db.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-db\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="graphql-server-db\obj\project.packagespec.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="graphql-server-db\graphql-server-db.csproj" />
+    </ItemGroup>
+
+</Project>
