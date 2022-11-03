@@ -2,7 +2,7 @@
 
 public record Author
 {
-    public Guid AuthorId { get; set; }
+    public int AuthorId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public DateTime BirthDate { get; set; }

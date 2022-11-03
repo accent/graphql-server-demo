@@ -17,15 +17,19 @@ public class DemoDbContext : DbContext
     {
         modelBuilder.Entity<Author>()
             .HasKey(x => x.AuthorId);
-        
+
         modelBuilder.Entity<Author>()
-            .Property(x => x.AuthorId).ValueGeneratedOnAdd();
-        
+            .Property(x => x.AuthorId)
+            .ValueGeneratedOnAdd()
+            .UseIdentityColumn();
+
         modelBuilder.Entity<Book>()
             .HasKey(x => x.BookId);
         
         modelBuilder.Entity<Book>()
-            .Property(x => x.BookId).ValueGeneratedOnAdd();
+            .Property(x => x.BookId)
+            .ValueGeneratedOnAdd()
+            .UseIdentityColumn();
 
         modelBuilder.Entity<Book>()
             .HasMany(x => x.Authors)
