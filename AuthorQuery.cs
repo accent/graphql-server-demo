@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace graphql_server_demo;
 
+[ExtendObjectType(Name="Query")]
 public class AuthorQuery
 {
     private readonly DemoDbContext _context;
