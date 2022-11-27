@@ -7,20 +7,13 @@ namespace graphql_server_demo;
 [ExtendObjectType(Name="Query")]
 public class AuthorQuery
 {
-    private readonly DemoDbContext _context;
-
-    public AuthorQuery(DemoDbContext dbContext)
+    public async Task<Author?> GetAuthor([Service(ServiceKind.Resolver)]DemoDbContext dbContext, int id)
     {
-        _context = dbContext;
-    }
-
-    public async Task<Author?> GetAuthor(int id)
-    {
-        return await _context.Authors.FirstOrDefaultAsync(x => x.AuthorId == id);
+        return await dbContext.Authors.FirstOrDefaultAsync(x => x.AuthorId == id);
     }
     
-    public async Task<List<Author>> GetAll()
+    public async Task<List<Author>> GetAllAuthors([Service(ServiceKind.Resolver)]DemoDbContext dbContext)
     {
-        return await _context.Authors.ToListAsync();
+        return await dbContext.Authors.ToListAsync();
     }
 }

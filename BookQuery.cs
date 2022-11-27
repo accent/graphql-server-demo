@@ -7,20 +7,13 @@ namespace graphql_server_demo;
 [ExtendObjectType(Name="Query")]
 public class BookQuery
 {
-    private readonly DemoDbContext _context;
-
-    public BookQuery(DemoDbContext dbContext)
+    public async Task<Book?> GetBook([Service(ServiceKind.Synchronized)]DemoDbContext dbContext, int id)
     {
-        _context = dbContext;
-    }
-
-    public async Task<Book?> GetBook(int id)
-    {
-        return await _context.Books.FirstOrDefaultAsync(x => x.BookId == id);
+        return await dbContext.Books.SingleOrDefaultAsync(x => x.BookId == id);
     }
     
-    public async Task<List<Book>> GetAll()
+    public async Task<List<Book>> GetAllBooks([Service(ServiceKind.Synchronized)]DemoDbContext dbContext)
     {
-        return await _context.Books.ToListAsync();
+        return await dbContext.Books.ToListAsync();
     }
 }
