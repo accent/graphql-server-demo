@@ -7,5 +7,5 @@ public record Author
     public string LastName { get; set; }
     public DateTime BirthDate { get; set; }
     public DateTime? DeathDate { get; set; }
-    public IEnumerable<Book> Books { get; set; }
+    public IEnumerable<AuthorBook> Books { get; set; }
 }

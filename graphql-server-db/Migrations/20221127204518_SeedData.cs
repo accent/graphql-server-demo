@@ -4,7 +4,7 @@
 
 namespace graphql_server_db.Migrations
 {
-    public partial class SeedDb : Migration
+    public partial class SeedData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,7 +24,7 @@ namespace graphql_server_db.Migrations
                   declare @book3 int
                   INSERT INTO Books ([Title], [Isbn]) VALUES ('Book title3', '1-673-1423-4')
                   select @book3 = @@IDENTITY
-                  INSERT INTO AuthorBook ([AuthorsAuthorId],[BooksBookId]) VALUES (@auth1, @book1), (@auth2, @book2), (@auth1, @book3), (@auth2, @book3)
+                  INSERT INTO AuthorBook ([AuthorId],[BookId]) VALUES (@auth1, @book1), (@auth2, @book2), (@auth1, @book3), (@auth2, @book3)
             ");
         }
 

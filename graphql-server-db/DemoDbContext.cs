@@ -7,12 +7,12 @@ public class DemoDbContext : DbContext
 {
     public DbSet<Author> Authors { get; set; }
     public DbSet<Book> Books { get; set; }
-    
+
     public DemoDbContext(DbContextOptions<DemoDbContext> options)
         : base(options)
     {
     }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Author>()
@@ -25,7 +25,7 @@ public class DemoDbContext : DbContext
 
         modelBuilder.Entity<Book>()
             .HasKey(x => x.BookId);
-        
+
         modelBuilder.Entity<Book>()
             .Property(x => x.BookId)
             .ValueGeneratedOnAdd()
@@ -33,10 +33,14 @@ public class DemoDbContext : DbContext
 
         modelBuilder.Entity<Book>()
             .HasMany(x => x.Authors)
-            .WithMany(x => x.Books);
-        
+            .WithOne(x => x.Book)
+            .HasForeignKey(x => x.BookId);
+
         modelBuilder.Entity<Author>()
             .HasMany(x => x.Books)
-            .WithMany(x => x.Authors);
+            .WithOne(x => x.Author)
+            .HasForeignKey(x => x.AuthorId);
+
+        modelBuilder.Entity<AuthorBook>().HasKey(x => new {x.AuthorId, x.BookId});
     }
 }

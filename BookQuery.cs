@@ -9,11 +9,17 @@ public class BookQuery
 {
     public async Task<Book?> GetBook([Service(ServiceKind.Synchronized)]DemoDbContext dbContext, int id)
     {
-        return await dbContext.Books.SingleOrDefaultAsync(x => x.BookId == id);
+        return await dbContext.Books
+            .Include(x => x.Authors)
+                .ThenInclude(x => x.Author)
+            .SingleOrDefaultAsync(x => x.BookId == id);
     }
     
     public async Task<List<Book>> GetAllBooks([Service(ServiceKind.Synchronized)]DemoDbContext dbContext)
     {
-        return await dbContext.Books.ToListAsync();
+        return await dbContext.Books
+            .Include(x => x.Authors)
+                .ThenInclude(x => x.Author)
+            .ToListAsync();
     }
 }

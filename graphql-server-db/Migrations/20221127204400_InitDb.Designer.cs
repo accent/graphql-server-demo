@@ -12,7 +12,7 @@ using graphql_server_db;
 namespace graphql_server_db.Migrations
 {
     [DbContext(typeof(DemoDbContext))]
-    [Migration("20221103214614_InitDb")]
+    [Migration("20221127204400_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,21 +23,6 @@ namespace graphql_server_db.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("AuthorBook", b =>
-                {
-                    b.Property<int>("AuthorsAuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BooksBookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AuthorsAuthorId", "BooksBookId");
-
-                    b.HasIndex("BooksBookId");
-
-                    b.ToTable("AuthorBook");
-                });
 
             modelBuilder.Entity("graphql_server_models.Author", b =>
                 {
@@ -66,6 +51,21 @@ namespace graphql_server_db.Migrations
                     b.ToTable("Authors");
                 });
 
+            modelBuilder.Entity("graphql_server_models.AuthorBook", b =>
+                {
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AuthorId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("AuthorBook");
+                });
+
             modelBuilder.Entity("graphql_server_models.Book", b =>
                 {
                     b.Property<int>("BookId")
@@ -87,19 +87,33 @@ namespace graphql_server_db.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("AuthorBook", b =>
+            modelBuilder.Entity("graphql_server_models.AuthorBook", b =>
                 {
-                    b.HasOne("graphql_server_models.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsAuthorId")
+                    b.HasOne("graphql_server_models.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("graphql_server_models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksBookId")
+                    b.HasOne("graphql_server_models.Book", "Book")
+                        .WithMany("Authors")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("graphql_server_models.Author", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("graphql_server_models.Book", b =>
+                {
+                    b.Navigation("Authors");
                 });
 #pragma warning restore 612, 618
         }
