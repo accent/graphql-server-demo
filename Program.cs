@@ -7,7 +7,10 @@ builder.Services.AddGraphQLServer()
     .RegisterDbContext<DemoDbContext>(DbContextKind.Synchronized)
     .AddQueryType(q => q.Name("Query"))
     .AddType<AuthorQuery>()
-    .AddType<BookQuery>();
+    .AddType<BookQuery>()
+    .AddMutationType(q => q.Name("Mutation"))
+    .AddType<AuthorMutation>()
+    .AddType<BookMutation>();
 
 builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
